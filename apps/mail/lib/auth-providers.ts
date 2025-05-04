@@ -48,6 +48,25 @@ export const authProviders: ProviderConfig[] = [
     },
     required: true,
   },
+  {
+    id: 'czlconnect',
+    name: 'CZL Connect',
+    requiredEnvVars: ['CZLCONNECT_CLIENT_ID', 'CZLCONNECT_CLIENT_SECRET'],
+    envVarInfo: [
+      { name: 'CZLCONNECT_CLIENT_ID', source: 'CZL Connect Developer Console' },
+      { name: 'CZLCONNECT_CLIENT_SECRET', source: 'CZL Connect Developer Console' },
+    ],
+    config: {
+      prompt: 'consent',
+      accessType: 'offline',
+      scope: ['read', 'write'],
+      clientId: process.env.CZLCONNECT_CLIENT_ID!,
+      clientSecret: process.env.CZLCONNECT_CLIENT_SECRET!,
+      authorizeUrl: 'https://connect.czl.net/oauth2/authorize',
+      tokenUrl: 'https://connect.czl.net/api/oauth2/token',
+      userInfoUrl: 'https://connect.czl.net/api/oauth2/userinfo',
+    },
+  },
   //   {
   //     id: 'microsoft',
   //     name: 'Microsoft',
